@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Campus Activities | Sports • Cultural • Technical • Clubs • Fests • Social Work</title>
+  <meta name="description"
+    content="Official extracurricular activities portal of Cummins College - Sports, Cultural, Technical, Clubs, Fests, Social Initiatives." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #2563eb;
+      --light: #f9fafb;
+      --surface: #ffffff;
+      --text: #374151;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --radius: 12px;
+      --shadow: 0 6px 16px rgba(0, 0, 0, .08);
+      --header-bg: #fff;
+    }
+
+    body.dark {
+      --primary: #fff;
+      --secondary: #60a5fa;
+      --light: #111827;
+      --surface: #1f2937;
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+      --border: #374151;
+      --header-bg: #1f2937;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background .3s, color .3s;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Header */
+    header {
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: background .3s, color .3s;
+    }
+
+    .container {
+      width: min(1120px, 92vw);
+      margin-inline: auto;
+      padding-inline: 20px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--primary);
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .menu a {
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .menu a:hover {
+      background: #f3f4f6;
+      color: var(--primary);
+    }
+
+    /* Dark mode switch */
+    .dark-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+
+    .dark-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--border);
+      transition: 0.4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: var(--surface);
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    .dark-switch input:checked+ .slider {
+      background-color: var(--secondary);
+    }
+
+    .dark-switch input:checked+ .slider:before {
+      transform: translateX(26px);
+    }
+
+    /* Updates Ticker */
+    .updates-ticker {
+      background: var(--secondary);
+      color: #fff;
+      overflow: hidden;
+      white-space: nowrap;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .ticker-track {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker 20s linear infinite;
+    }
+
+    .ticker-track span {
+      display: inline-block;
+      margin-right: 50px;
+    }
+
+    @keyframes ticker {
+      0% {
+        transform: translateX(0%);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    body.dark .updates-ticker {
+      background: #1e40af;
+      color: #fff;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 100px 0;
+      background: url('https://cumminscollege.edu.in/UserData/uploads/pages/144/about-image.jpg') no-repeat center
+        center;
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 36px;
+      align-items: center;
+      text-align: left;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: #dbeafe;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 999px;
+    }
+
+    body.dark .eyebrow {
+      background: #1e40af;
+      color: #60a5fa;
+    }
+
+    .hero h2 {
+      font-size: clamp(30px, 4.5vw, 48px);
+      margin: 14px 0 8px;
+      color: #fff;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #fff;
+    }
+
+    .hero-actions {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 6px;
+      border: 1px solid #d1d5db;
+      font-weight: 600;
+    }
+
+    .btn.primary {
+      background: var(--secondary);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Snapshot */
+    .hero-card {
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .section {
+      padding: 48px 0;
+      text-align: center;
+    }
+
+    .section h3 {
+      font-size: 30px;
+      margin: 0 0 10px;
+      color: var(--primary);
+    }
+
+    .section p.lead {
+      color: var(--muted);
+      max-width: 70ch;
+      margin-inline: auto;
+    }
+
+    /* Activities Cards */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: transform .2s, box-shadow .2s;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .icon {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .card h4 {
+      margin: 8px 0 6px;
+      font-size: 18px;
+      color: var(--secondary);
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Gallery 2 rows x 3 columns */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: transform .2s;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Contact Section */
+    .contact {
+      background: transparent;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .contact-card {
+      background: var(--surface);
+      padding: 20px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform .2s, box-shadow .2s;
+      text-align: left;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-card h4 {
+      margin-bottom: 15px;
+      font-size: 20px;
+      color: var(--primary);
+    }
+
+    .contact-info {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .contact-info div:first-child {
+      font-size: 20px;
+    }
+
+    .contact-form form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: inherit;
+      resize: none;
+    }
+
+    .contact-form .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .contact-form button {
+      background: var(--secondary);
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .contact-form button:hover {
+      background: #1d4ed8;
+    }
+
+    /* Footer remains unchanged, even in dark mode */
+    footer {
+      background: #1e3a8a;
+      color: #fff;
+      padding: 40px 20px 20px;
+      margin-top: 40px;
+    }
+
+    footer .foot {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    footer h5 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    footer p.muted {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #e5e7eb;
+    }
+
+    footer a {
+      color: #f5f503;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    footer .copy {
+      text-align: center;
+      font-size: 13px;
+      color: #d1d5db;
+      margin-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      footer .foot {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer .foot {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+.gallery-grid img {
+  width: 100%;
+  height: 220px;   /* adjust height as needed */
+  object-fit: cover;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform .2s;
+}
+
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <h1>Cummins College of Engineering</h1>
+      </div>
+      <nav class="menu">
+        <a href="#home">Home</a>
+        <a href="#activities">Activities</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#contact">Contact</a>
+        <label class="dark-switch">
+          <input type="checkbox" id="darkModeToggle">
+          <span class="slider"></span>
+        </label>
+      </nav>
+    </div>
+    <!-- Updates Ticker -->
+    <div class="updates-ticker">
+      <div class="ticker-track">
+        <span>Umang 2025 is coming soon!</span>
+        <span>Join Robotics Club for latest projects!</span>
+        <span>Sports week registration open!</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="home" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Student Life • 2025–26</span>
+        <h2>Excellence Beyond Classrooms</h2>
+        <p class="subtitle">Empowering Women Engineers with Sports, Culture, Technology, Leadership, and more.</p>
+        <div class="hero-actions">
+          <button class="btn primary">Explore Activities</button>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div style="font-weight:700;">Quick Snapshot</div>
+        <div class="kpis">
+          <div>
+            <div class="n">50+</div>
+            <div class="l">Activities</div>
+          </div>
+          <div>
+            <div class="n">2000+</div>
+            <div class="l">Student Members</div>
+          </div>
+          <div>
+            <div class="n">20+</div>
+            <div class="l">Annual Fests</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Activities Section -->
+  <section id="activities" class="section">
+    <div class="container">
+      <h3>Our Extracurricular Activities</h3>
+      <p class="lead">Discover a wide range of activities to grow your skills, passion, and connections.</p>
+      <div class="grid-4">
+        <article class="card">
+          <div class="icon">⚽</div>
+          <h4>Sports</h4>
+          <p>Basketball, volleyball, athletics and more competitive sports.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🎭</div>
+          <h4>Cultural</h4>
+          <p>Music, dance, theatre, and arts celebrating creativity.</p>
+        </article>
+        <article class="card">
+          <div class="icon">💻</div>
+          <h4>Technical</h4>
+          <p>Hackathons, robotics, coding, AI/ML and innovation projects.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🤝</div>
+          <h4>Clubs</h4>
+          <p>Join academic and non-academic clubs to learn and collaborate.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🎉</div>
+          <h4>Fests</h4>
+          <p>Annual fests and college events that bring students together.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🌱</div>
+          <h4>Social Work</h4>
+          <p>Community service, NSS, and sustainability initiatives.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <h3>Gallery</h3>
+      <p class="lead">Highlights from our vibrant campus life.</p>
+      <div class="gallery-grid">
+        <img src="https://cumminscollege.edu.in/app_theme/images/lifetatcampus-5.jpeg" alt="Gallery Image 1" class="rounded-2xl shadow-xl w-full max-w-sm mx-auto">
+        <img src="tree.jpg">
+        <img src="https://cumminscollege.edu.in/UserData/uploads/album/ananya/Ananya%202.JPG" alt="Gallery Image 3" class="rounded-2xl shadow-xl w-full max-w-sm mx-auto">
+        <img src="https://image-static.collegedunia.com/public/reviewPhotos/1050781/6.jpg" alt="Gallery Image 4" class="rounded-2xl shadow-xl w-full max-w-sm mx-auto">
+        <img src="https://cumminscollege.edu.in/UserData/uploads/pages/203/event1.jpg" alt="Gallery Image 5" class="rounded-2xl shadow-xl w-full max-w-sm mx-auto">
+        <img src="https://media.licdn.com/dms/image/v2/D4D22AQFSzEVjakQo-g/feedshare-shrink_800/feedshare-shrink_800/0/1725977946781?e=2147483647&v=beta&t=Ruw3xBsNapGha-H1jSmlJjc7HS5CGSusB5Ak5bkjNEk" alt="Gallery Image 6" class="rounded-2xl shadow-xl w-full max-w-sm mx-auto">
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div style="margin-bottom:40px;">
+        <h3>Contact & Newsletter</h3>
+        <p>We'd love to hear from you and keep you updated with our newsletter</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h4>Contact Information</h4>
+          <div class="contact-info">
+            <div>📍</div>
+            <div>
+              <p>Location</p>
+              <p>Cummins College of Engineering Campus</p>
+            </div>
+          </div>
+          <div class="contact-info">
+            <div>✉</div>
+            <div>
+              <p>Email</p>
+              <p>cumminscollege.edu.in</p>
+            </div>
+          </div>
+          <div class="contact-info">
+            <div>🌐</div>
+            <div>
+              <p>Social Media</p>
+              <p>
+                <a href="#">Instagram</a> |
+                <a href="#">LinkedIn</a> |
+                <a href="#">Discord</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-card contact-form">
+          <h4>Send us a Message / Subscribe to Newsletter</h4>
+          <form>
+            <div class="row">
+              <input type="text" placeholder="First Name">
+              <input type="text" placeholder="Last Name">
+            </div>
+            <input type="email" placeholder="Email">
+            <textarea rows="4" placeholder="Message / Comments"></textarea>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container foot">
+      <div>
+        <h5>About CCoEW</h5>
+        <p class="muted">
+          Cummins College of Engineering for Women (CCoEW), Nagpur, established in 2010 by MKSSS, is NAAC A+ accredited
+          and affiliated to RTM Nagpur University. Empowering women engineers through academic excellence, research, and
+          holistic development.
+        </p>
+      </div>
+      <div>
+        <h5>Courses & Admissions</h5>
+        <p class="muted">
+          B.Tech Programs:<br>
+          • Computer Engineering<br>
+          • Mechanical Engineering<br>
+          • E&TC Engineering<br><br>
+          Admission via MHT-CET / JEE Main
+        </p>
+      </div>
+      <div>
+        <h5>Contact Us</h5>
+        <p class="muted">
+          📞 +91 9420410225<br>
+          📞 +91 8055935567<br>
+          📞 +91 7768929237<br>
+          📞 +91 8422008886<br><br>
+          ✉ Email: <a href="mailto:office@cumminscollege.edu.in">office@cumminscollege.edu.in</a>
+        </p>
+      </div>
+      <div>
+        <h5>Follow Us</h5>
+        <p class="muted">
+          <a href="#">Instagram</a> |
+          <a href="#">LinkedIn</a> |
+          <a href="#">Facebook</a> |
+          <a href="#">Discord</a>
+        </p>
+      </div>
+    </div>
+    <div class="copy">
+      &copy; 2025 Cummins College of Engineering for Women. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('darkModeToggle');
+    toggle.addEventListener('change', function () {
+      document.body.classList.toggle('dark');
+    });
+  </script>
+</body>
+
+</html>
